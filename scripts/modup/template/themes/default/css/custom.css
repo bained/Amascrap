@@ -1,0 +1,83 @@
+
+.form-inline input[type="text"] {
+	min-width: 500px;
+}
+
+table tr .actions {
+	min-width: 130px;
+}
+table th.to a {
+    color: red;
+}
+
+.topbuttons {
+	margin-bottom: 20px;
+}
+
+span.up_arrow {
+    float: right;
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+span.down_arrow {
+    float: right;
+    color: blue;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+
+
+/* LOADING...  */
+.loadingmodal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+                url('img/loading.gif')
+                50% 50%
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .loadingmodal {
+    display: block;
+}
+
+/* END LOADING... */
+
+/* FILE INPUT */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+/* END FILE INPUT */
