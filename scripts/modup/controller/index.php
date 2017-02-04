@@ -9,9 +9,13 @@ if(isset($post['get_amazon_data'])){
 	if(!preg_match('@^http@', $post['url']))
 		$errors[] = 'Not a URL!';
 	if(!preg_match('@//(www.)?amazon.co.uk@', $post['url']))
-		$errors[] = 'Link must be http://amazon.co.uk...!';
-	if(!$errors)
+		$errors[] = 'Link must be http(s)://amazon.co.uk...!';
+	if(!$errors) {
 		$product_content = $amazon->get_amdata($post['url']);
+		if(!$product_content){
+			$errors[] = 'Can\'t get product info! Check code!';
+		}
+	}
 }
 
 if(isset($post['add_product_to_db'])){

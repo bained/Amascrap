@@ -17,9 +17,18 @@ B00LHRJXRG
 public function get_amdata($url){
 	$code = trim($this->amazon_code($url));
 	if(!$code) return false;
-	$short_url = "http://www.amazon.co.uk/dp/$code";
+
+	// Debug
+	// print_r($code);
+
+	$short_url = "https://www.amazon.co.uk/dp/$code";
 	// $html = $this->get_pg($short_url);
 	$html = $this->get_pg_curl($short_url);
+
+	// Debug
+	// print ("<br> <hr>");
+	// print_r($html);
+
 	if(!$html) return false;
 
 	$price = $this->get_price($html);
@@ -133,6 +142,8 @@ private function get_pg_curl($url){
 	curl_setopt($ch, CURLOPT_COOKIEJAR, "cookie.txt");
 	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 35);
 	curl_setopt($ch, CURLOPT_REFERER, "http://www.amazon.co.uk");
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // <-- За HTTPS
+
 	$html = curl_exec($ch);
 	$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 	curl_close($ch);
@@ -140,6 +151,8 @@ private function get_pg_curl($url){
 	if($html && !($httpCode == 404))
 		return $html;
 	else
+		// Debug
+		echo "<br>Can not get HTML code!!<br>";
 		return false;
 }
 

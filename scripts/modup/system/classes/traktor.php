@@ -62,6 +62,7 @@ public function formatdatearray($array){
 			date('G, ', $dateprice['dtime']).
 			(int)(date('i', $dateprice['dtime']))
 		);
+		if(!$dateprice['price']) $dateprice['price'] = 0;
 		$jsn_return .= '[new Date('.$dt.'), '.$dateprice['price'].']';
 		if (next($array)==true) $jsn_return .= ', ';
 		else $jsn_return .= "\n";
